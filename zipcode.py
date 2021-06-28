@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description="supply zip code argument to get in
 
 args = parser.add_argument("zipcode", help="zip code argument", type=str)
 args = parser.add_argument('-c', '--country', help='specify country abbrev', type=str, default='us')
-args = parser.add_argument('-ls', '--list-countries', help='list country abbreviations')
+args = parser.add_argument('-ls', '--list-countries', help='list country abbreviations', action='store_true')
 
 args = parser.parse_args()
 
@@ -61,20 +61,20 @@ country_abbreviations = {
     'md' : ['Moldavia', 'MD-2000:MD7731', '1753'],
     'mh' : ['Marshall Islands', '96960:96970', '2'],
     'mk' : ['Macedonia', '1000', '7550'],
-    'mp' : ['Northern Mariana Islands', '', '4'],
-    'mq' : ['Martinique', '', '34'],
-    'mx' : ['Mexico', '', ''],
-    'my' : ['Malasia', '', ''],
-    'nl' : ['Holland', '', ''],
-    'no' : ['Norway', '', ''],
-    'nz' : ['New Zealand', '', ''],
-    'ph' : ['Phillippines', '', ''],
-    'pk' : ['Pakistan', '', ''],
-    'pl' : ['Poland', '', ''],
-    'pm' : ['Saint Pierre and Miquelon', '', ''],
-    'pr' : ['Puerto Rico', '', ''],
-    'pt' : ['Portugal', '', ''],
-    're' : ['French Reunion', '', ''],
+    'mp' : ['Northern Mariana Islands', '96950:96952', '4'],
+    'mq' : ['Martinique', '97200:97290', '34'],
+    'mx' : ['Mexico', '01000:99998', '75203'],
+    'my' : ['Malasia', '01000:98859', '2818'],
+    'nl' : ['Holland', '1000:9999', '5314'],
+    'no' : ['Norway', '0001:9991', '4574'],
+    'nz' : ['New Zealand', '0110:9893', '1737'],
+    'ph' : ['Phillippines', '0400:9811', '2232'],
+    'pk' : ['Pakistan', '10010:97320', '11847'],
+    'pl' : ['Poland', '00-001:99-440', '21980'],
+    'pm' : ['Saint Pierre and Miquelon', '97500:97500', '2'],
+    'pr' : ['Puerto Rico', '00601:00988', '187'],
+    'pt' : ['Portugal', '1000-001:9980-999', '204006'],
+    're' : ['French Reunion', '97400:97490', '37'],
     'ru' : ['Russia', '101000:901993', '43538'],
     'se' : ['Sweden', '10005:98499', '16079'],
     'si' : ['Slovenia', '1000:9600', '557'],
@@ -87,10 +87,13 @@ country_abbreviations = {
     'va' : ['Vatican', '00120:00120', '2'],
     'vi' : ['Virgina Islands', '00801:00851', '16'],
     'yt' : ['Mayotte', '97600:97680', '17'],
-    'za' : ['South Africa', '0002:9992', '3920'],
-    
+    'za' : ['South Africa', '0002:9992', '3920'],    
     }
 
+
+if args.list_countries:
+    print(country_abbreviations)
+        
 
 
 # Aquire json string response from Web API
