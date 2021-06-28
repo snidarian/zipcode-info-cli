@@ -112,6 +112,7 @@ get_request_results = requests.get(f"https://api.zippopotam.us/{args.country}/{a
 json_payload = get_request_results.json()
 
 
+# uncomment to print the json response as a python object
 #print(json_payload)
 
 def print_zipcode_information() -> None:
