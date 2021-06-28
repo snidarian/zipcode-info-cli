@@ -5,6 +5,14 @@
 
 import requests
 import argparse
+from colorama import Fore
+
+
+# Ansi color code escape sequences
+red = Fore.RED
+green = Fore.GREEN
+yellow = Fore.YELLOW
+reset = Fore.RESET
 
 
 # set up argparse
@@ -92,8 +100,8 @@ country_abbreviations = {
 
 
 if args.list_countries:
-    print(country_abbreviations)
-        
+    for dict_item in country_abbreviations:
+        print(country_abbreviations[dict_item])
 
 
 # Aquire json string response from Web API
@@ -104,13 +112,19 @@ get_request_results = requests.get(f"https://api.zippopotam.us/{args.country}/{a
 json_payload = get_request_results.json()
 
 
-print(json_payload)
+#print(json_payload)
+
+def print_zipcode_information() -> None:
+    print(green + f"Country: {reset}{json_payload['country']}")
+    print(green + f"Zipcode: {reset}{json_payload['post code']}")
+    print(green + f"State: {reset}{json_payload['places'][0]['state']}")
+    print(green + f"Place: {reset}{json_payload['places'][0]['place name']}")
+    print(green + f"Longitude: {reset}{json_payload['places'][0]['longitude']}")
+    print(green + f"Latitude: {reset}{json_payload['places'][0]['latitude']}")
 
 
 
-
-
-
+print_zipcode_information()
 
 
 
