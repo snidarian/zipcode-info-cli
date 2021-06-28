@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
-# queries web api to acquire information on supplied zip code
+# documentation for interacting with the web API can be found here:
+# http://www.zippopotam.us/
 
+# queries web api to acquire information on supplied zip code
 
 import requests
 import argparse
